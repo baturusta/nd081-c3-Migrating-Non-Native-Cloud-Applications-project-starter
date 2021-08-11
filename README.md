@@ -63,9 +63,12 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |   Basic  |    $30          |
+| *Azure Service Bus*   |      Basic   |      $0.05        |
+| *App Service*                  |     Free    |        $0      |
+| *Function App*                  |     Consumption    |        $0.20 per million executions      |
+| *Storage Account*                  |     Standard    |        $0.3      |
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+
+The web app architecture handles the notifying the attendees of new notifications in addition to managing the database and the frontend. This is slightly easier to manage as it is all in a single structure. But means it will share resources with the other functionality and an increased number of traffic could bottleneck the website altogether as well as any upgrade and code reviews will cause disruption to the site activity. Also, it is good practice to separate different functions as it will improve readability, documentation, debugging and it will increase flexibility. Migrating email functionality of the app to Azure Function does just that. It is responsible for only a single function, easier to monitor and manage, and does not necessarily require the website to be taken down when in need of maintenance or debugging. The downside is a arguably negligible increase to the price and a background knowledge of Azure Functions systems.
