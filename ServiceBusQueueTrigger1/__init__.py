@@ -14,7 +14,7 @@ def main(msg: func.ServiceBusMessage):
     # TODO: Get connection to database
     POSTGRES_URL="project3pg.postgres.database.azure.com"  #TODO: Update value
     POSTGRES_USER="batursql@project3pg" #TODO: Update value
-    POSTGRES_PW="136noluB"   #TODO: Update value
+    POSTGRES_PW=""   #TODO: Update value
     POSTGRES_DB="techconfdb"   #TODO: Update value
     #DB_URL = 'postgresql://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
     connection = psycopg2.connect(host=POSTGRES_URL, dbname=POSTGRES_DB, user=POSTGRES_USER, password=POSTGRES_PW)
@@ -29,7 +29,7 @@ def main(msg: func.ServiceBusMessage):
         attendees=cursor.fetchall()
         nr_of_attendees=len(attendees)
         # TODO: Loop through each attendee and send an email with a personalized subject
-        '''sg = SendGridAPIClient('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')
+        '''sg = SendGridAPIClient('')
         for attendee in attendees:
             notify = Mail(
             from_email="info@techconf.com",
